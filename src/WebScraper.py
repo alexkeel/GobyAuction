@@ -6,6 +6,7 @@ import requests
 import collections
 import sqlite3
 import SqlHandler
+import shutil
 
 
 class WebScraper:
@@ -31,18 +32,32 @@ class WebScraper:
         pass
 
     def download_thumbnails(self, item_list):
+        if not os.path.exists('../data/images/'):
+            os.makedirs('../data/images')
+        if not os.path.exists('../data/images_temp'):
+            os.makedirs('../data/images_temp')
         for item in item_list:
             if item is not None:
                 image_path = "../data/images/" + str(item[0]) + ".jpg"
+                temp_image_path = "../data/images_temp/" + str(item[0]) + ".jpg"
                 image_url = item[4]
+                print("here")
                 try:
                     if(os.path.isfile(image_path) is not True):
                         print(image_url + " downloading...")
-                        urllib.request.urlretrieve(image_url, image_path)
+                        urllib.request.urlretrieve(image_url, temp_image_path)
                     else:
                         print(image_url + " found")
+                        shutil.move(image_path, temp_image_path)
                 except ValueError:
                     print("Invalid URL")
+                    
+        # Move temp folder and delete old images
+        self.delete_thumbnails()
+        shutil.move('../data/images_temp', '../data/images')
+
+    def delete_thumbnails(self):
+        shutil.rmtree('../data/images')
 
         
 class Item:
