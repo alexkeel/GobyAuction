@@ -1,0 +1,7 @@
+{
+	"Keywords": ["USSR", "SOVIET", "Coin"], 
+	"StartPrice": 0, 
+	"EndPrice": 70, 
+	"ReminderInterval": 30,
+	"PagesToScrape": 1
+}
