@@ -147,7 +147,7 @@ class Ebay(WebScraper):
                                                 'lvpicinner full-width picW'})
             item_link = image_container.find('a', href=True)['href']
             
-            image_link = image_container.find('img').get('imgurl')
+            image_link = image_container.find('img').get('src')
             
             purchase_type = ""
             if item.find('span', {'title': 'Buy it now'}) is not None:
