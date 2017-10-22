@@ -18,8 +18,6 @@ class GUI(QtWidgets.QMainWindow):
         self.items = Functional.get_items()
         Functional.download_thumbnails(self.items)
         self.create_gui()
-        #for item in items:
-        #print(item)
 
     def create_gui(self):
 
@@ -40,16 +38,9 @@ class GUI(QtWidgets.QMainWindow):
         self.main_area = QtWidgets.QGridLayout()
         self.main_area.setColumnMinimumWidth(0, self.frameGeometry().width() / 2)
         self.main_area.setColumnMinimumWidth(1, self.frameGeometry().width() / 2)
-
-        
-        
+ 
         self.main_area.addWidget(self.create_item_area(self.item_list), 0, 0)
         self.main_area.addLayout(self.item_info_area, 0, 1)
-
-        #TEST CODE
-        test_button = QtWidgets.QPushButton("Add item")
-        test_button.clicked.connect(lambda: self.testFunc())
-        self.main_area.addWidget(test_button)
         
         # Set main window properties
         self.setWindowTitle("GobyAuction")
