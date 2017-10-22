@@ -68,7 +68,7 @@ class GUI(QtWidgets.QMainWindow):
         button_container = QtWidgets.QButtonGroup(self.scrollbar_central)
         button_container.setExclusive(True)
         # Add item list to container
-        for item in item_list:
+        for item in reversed(item_list):
             button_container.addButton(item)
             self.scrollbar_central.layout().addWidget(item)
 

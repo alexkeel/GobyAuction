@@ -41,7 +41,6 @@ class WebScraper:
                 image_path = "../data/images/" + str(item[0]) + ".jpg"
                 temp_image_path = "../data/images_temp/" + str(item[0]) + ".jpg"
                 image_url = item[4]
-                print("here")
                 try:
                     if(os.path.isfile(image_path) is not True):
                         print(image_url + " downloading...")
@@ -99,6 +98,7 @@ class Ebay(WebScraper):
                              + concatinated_keywords + "&_sacat=" + str(i))
         pages_crawled = 0
         pages_failed = 0
+        print(pagequeue[0])
 
         # Initialise the session
         sess = requests.session()
